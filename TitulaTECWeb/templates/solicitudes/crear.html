@@ -1,0 +1,33 @@
+{% extends 'comunes/base.html' %}
+{% block navbar %}
+    {% include 'comunes/menu.html' %}
+{% endblock %}
+{% block principal %}
+    <h1 class="bg bg-info">REGISTRO DE SOLICITUD</h1>
+    <form action="/opciones/registrar" method="post">
+        <div class="form-group">
+            <label>Nombre de Alumno: <b>Roberto Suarez Zinzun</b></label>
+        </div>
+         <div class="form-group">
+           <label>No. Control:02420433</label>
+        </div>
+        <div class="form-group">
+            <label>Creditos:260</label>
+        </div>
+        <div class="form-group">
+            <label>Carrera:Ingenieria en Sistemas Computacionales</label>
+        </div>
+        <div class="form-group">
+            <label>Proyecto:</label>
+            <input type="text" name="proyecto" id="proyecto" class="form-control" required placeholder="Titulo del Proyecto">
+        </div>
+        <div class="form-group">
+            <label>Opción:</label>
+            <select name="opcion">
+                <option>-Elige una opción de titulación</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" id="registrar" disabled> <span class="glyphicon glyphicon-ok"></span> </button>
+        <a class="btn btn-success" href="/solicitudes"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
+    </form>
+{% endblock %}

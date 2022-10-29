@@ -1,0 +1,32 @@
+{% extends 'comunes/base.html' %}
+{% block navbar %}
+    {% include 'comunes/menu.html' %}
+{% endblock %}
+{% block principal %}
+    <h1 class="bg bg-info">LISTADO DE SOLICITUDES</h1>
+    <!--if para preguntar el estatus de la respuesta-->
+    <a class="btn btn-primary" href="/solicitudes/nueva"> <span class="glyphicon glyphicon-plus"></span> </a>
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>PROYECTO</th>
+            <th>OPCION</th>
+            <th>ESTATUS</th>
+            <th>FECHA DE REGISTRO</th>
+            <th>FECHA DE ATENCION</th>
+            <th>Ver</th>
+        </thead>
+        <!--For para recuperar las opciones-->
+            <tr>
+                <td>1</td>
+                <td>Plataforma E-Commerce</td>
+                <td>Tesis</td>
+                <td>P</td>
+                <td>22-10-2022</td>
+                <td>29-10-2022</td>
+                <td><a href="/solicitudes/editar"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+            </tr>
+
+    </table>
+    <a href="/principal" class="btn btn-success"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
+{% endblock %}

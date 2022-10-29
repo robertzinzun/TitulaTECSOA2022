@@ -1,0 +1,23 @@
+{% extends 'comunes/base.html' %}
+{% block navbar %}
+    {% include 'comunes/menu.html' %}
+{% endblock %}
+{% block principal %}
+    <h1 class="bg bg-info">LISTADO DE OPCIONES</h1>
+    <!--if para preguntar el estatus de la respuesta-->
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </thead>
+        <!--For para recuperar las opciones-->
+            <tr>
+                <td>1</td>
+                <td>Tesis</td>
+                <td>Entregar del informe de la Tesis</td>
+            </tr>
+
+    </table>
+    <a href="/principal" class="btn btn-success"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
+{% endblock %}

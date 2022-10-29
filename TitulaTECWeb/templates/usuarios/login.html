@@ -1,0 +1,28 @@
+{% extends 'comunes/base.html' %}
+{% block principal %}
+    <h1 class="bg bg-info">ACCESO AL SISTEMA</h1>
+    <form action="/usuarios/login" method="post">
+        <div class="form-group">
+        <label>Email:</label>
+        <input type="email" class="form-control" name="email" placeholder="Ingresa tu email" maxlength="100">
+        </div>
+        <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" class="form-control" name="password" maxlength="20" placeholder="Ingresa tu password">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok-sign"></span> Iniciar</button>
+        <a class="btn btn-info" href="/usuarios/alumnos/nuevo"> <span class="glyphicon glyphicon-list-alt"></span> Registrarme</a>
+        </div>
+
+    </form>
+    {% if get_flashed_messages()%}
+            {% for m in get_flashed_messages()%}
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{m}}</strong>
+            </div>
+            {% endfor %}
+    {% endif %}
+
+{% endblock %}

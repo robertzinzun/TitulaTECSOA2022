@@ -1,0 +1,10 @@
+{% extends 'comunes/base.html' %}
+{% block navbar %}
+    {% include 'comunes/menu.html' %}
+{% endblock %}
+{% block principal %}
+    <div class="text-center">
+        <h1>Bienvenido al Sistema de TitulaTEC</h1>
+        <img src="{{url_for('static',filename='imagenes/fondo.jpg')}}">
+    </div>
+{% endblock %}
