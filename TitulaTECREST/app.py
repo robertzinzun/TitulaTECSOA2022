@@ -23,6 +23,23 @@ def agregarSolicitud():
     json=request.get_json()
     return sol.agregar(json)
 
+@app.route('/Solicitudes',methods=['PUT'])
+def modificarSolicitud():
+    sol = Solicitud()
+    json = request.get_json()
+    return sol.modificar(json)
+
+@app.route('/Solicitudes/<int:id>',methods=['DELETE'])
+def eliminarSolicitud(id):
+    sol = Solicitud()
+    return sol.eliminar(id)
+
+@app.route('/Solicitudes',methods=['GET'])
+def consultaSolicitudes():
+    sol = Solicitud()
+    return sol.consultaGeneral()
+
+
 if __name__=='__main__':
     db.init_app(app)
     app.run(debug=True,host='0.0.0.0',port=8000)
