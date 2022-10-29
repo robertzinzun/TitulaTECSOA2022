@@ -87,6 +87,43 @@ class Solicitud(db.Model):
             respuesta['mensaje'] = "Error al ejecutar la consulta de solicitudes"
         return respuesta
 
+    def consultaIndividual(self,id):
+        respuesta = {"estatus": "", "mensaje": ""}
+        data={"id":id}
+        try:
+            row = db.session.execute("select * from vSolicitudes where idSolicitud=:id",data);
+            respuesta['estatus'] = "OK"
+            row=row.fetchone()
+            if row!=None:
+                respuesta['mensaje'] = "Listado de Solicitud"
+                respuesta["solicitud"] =self.toJson(row)
+            else:
+                respuesta['mensaje'] = "La solicitud no existe"
+        except:
+            respuesta['estatus'] = "Error"
+            respuesta['mensaje'] = "Error al ejecutar la consulta de solicitudes"
+        return respuesta
+
+    def consultaPorAlumno(self,idAlumno):
+        respuesta = {"estatus": "", "mensaje": ""}
+        data={"id":idAlumno}
+        try:
+            rs = db.session.execute("select * from vSolicitudes where idAlumno=:id", data);
+            respuesta['estatus'] = "OK"
+            lista = []
+            for row in rs:
+                lista.append(self.toJson(row))
+
+            if len(lista)>0:
+                respuesta['mensaje'] = "Listado de Solicitudes"
+                respuesta["solicitudes"] = lista
+            else:
+                respuesta['mensaje'] = "El alumno no tiene solicitudes registradas"
+        except:
+            respuesta['estatus'] = "Error"
+            respuesta['mensaje'] = "Error al ejecutar la consulta de solicitudes"
+        return respuesta
+
     def toJson(self,solicitud):
         dict_sol={"administrativo":"","alumno":"","carrera":"","estatus":solicitud[7],
                   "fechaAtencion":solicitud[5],"fechaRegistro":solicitud[6],"id":solicitud[0],

@@ -39,6 +39,17 @@ def consultaSolicitudes():
     sol = Solicitud()
     return sol.consultaGeneral()
 
+@app.route('/Solicitudes/<int:id>',methods=['GET'])
+def consultaSolicitud(id):
+    sol = Solicitud()
+    return sol.consultaIndividual(id)
+
+@app.route('/Solicitudes/alumno/<int:id>',methods=['GET'])
+def consultaSolicitudesPorAlumno(id):
+    sol = Solicitud()
+    return sol.consultaPorAlumno(id)
+
+
 
 if __name__=='__main__':
     db.init_app(app)
