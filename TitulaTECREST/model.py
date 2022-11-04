@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import INTEGER,String,Column
+from sqlalchemy import INTEGER,String,Column,ForeignKey
+from sqlalchemy.orm import relationship
 import json
 db=SQLAlchemy()
 
@@ -137,4 +138,81 @@ class Solicitud(db.Model):
         dict_sol["carrera"] = dict_carrera
         dict_sol["opcion"] = dict_opcion
         return dict_sol
+#Clases para la manipulación de alumnos
+class Usuario(db.Model):
+    __tablename__='Usuarios'
+    idUsuario=Column(INTEGER,primary_key=True)
+    nombre=Column(String(100),nullable=False)
+    sexo=Column(String,nullable=False)
+    telefono=Column(String(12),nullable=False)
+    email=Column(String(100),unique=True)
+    password=Column(String(20),nullable=False)
+    tipo=Column(String,nullable=False,default='E')
+    estatus=Column(String,nullable=False,default='A')
+
+class Alumno(db.Model):
+    __tablename__='Alumnos'
+    idAlumno=Column(INTEGER,primary_key=True)
+    noControl=Column(String(9),unique=True)
+    anioEgreso=Column(INTEGER,nullable=False)
+    creditos=Column(INTEGER,nullable=False)
+    estatus=Column(String,nullable=False,default='E')
+    idUsuario=Column(INTEGER,ForeignKey('Usuarios.idUsuario'))
+    idCarrera=Column(INTEGER,nullable=False)
+    usuario=relationship(Usuario,lazy='select')
+
+    def agregar(self, ojson):
+        dict_salida = {"estatus": "", "mensaje": ""}
+        try:
+            self.from_json(ojson)
+            db.session.add(self.usuario)
+            db.session.add(self)
+            db.session.commit()
+            dict_salida['estatus'] = 'Ok'
+            dict_salida["mensaje"] = 'Alumno registrado con exito'
+        except:
+            db.session.rollback()
+            dict_salida['estatus'] = 'Error'
+            dict_salida["mensaje"] = 'Error al registrar al alumno'
+        return json.dumps(dict_salida)
+
+    def from_json(self, ojson):
+        usuario = Usuario()
+        usuario.nombre = ojson['nombre']
+        usuario.sexo = ojson['sexo']
+        usuario.telefono = ojson['telefono']
+        usuario.email = ojson['email']
+        usuario.password = ojson['password']
+        self.usuario = usuario
+        self.noControl = ojson['nocontrol']
+        self.anioEgreso = ojson['anioEgreso']
+        self.creditos = ojson['creditos']
+        self.idCarrera = ojson['idCarrera']
+
+    def autenticar(self,json):
+        respuesta = {"estatus": "", "mensaje": ""}
+        try:
+            rs = db.session.execute("select * from vAlumnos where email=:email and password=:password and estatus='E'",
+                                    json);
+            row = rs.fetchone()
+            if row != None:
+                respuesta['estatus'] = 'Ok'
+                respuesta['mensaje'] = "Alumno identificado"
+                respuesta["alumno"] = self.toJson(row)
+            else:
+                respuesta['estatus'] = 'Error'
+                respuesta['mensaje'] = "Datos incorrectos"
+        except:
+            respuesta['estatus'] = "Error"
+            respuesta['mensaje'] = "Error al ejecutar la autenticación"
+        return respuesta
+
+    def toJson(self,res):
+        dict_json={
+            "anioEgreso": res[5], "carrera": res[10], "creditos": res[4], "email": res[7],
+            "estatus": res[11], "id": res[0],"noControl": res[1], "nombre": res[2],
+            "sexo": res[3],"telefono": res[6]
+        }
+        return dict_json
+
 

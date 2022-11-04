@@ -1,5 +1,5 @@
 from flask import Flask,request
-from model import db,Opcion,Solicitud
+from model import db,Opcion,Solicitud, Alumno
 
 import json
 app=Flask(__name__)
@@ -49,7 +49,18 @@ def consultaSolicitudesPorAlumno(id):
     sol = Solicitud()
     return sol.consultaPorAlumno(id)
 
+@app.route('/alumnos',methods=['post'])
+def agregarAlumno():
+    ojson=request.get_json()
+    a=Alumno()
+    return a.agregar(ojson)
 
+@app.route('/alumnos/autenticar',methods=['GET'])
+def autenticar():
+    datos=request.get_json()
+    alumno=Alumno()
+    salida=alumno.autenticar(datos)
+    return salida
 
 if __name__=='__main__':
     db.init_app(app)

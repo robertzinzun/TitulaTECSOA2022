@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="80c2c2c0-301a-462a-8a98-2b20525b58fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../TitulaTECREST/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECREST/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECREST/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECREST/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECREST/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECREST/model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -270,14 +268,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3283767" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3283767" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
