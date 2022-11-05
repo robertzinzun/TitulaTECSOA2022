@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class AlumnoDAO {
     public Alumno consultar(String noControl){
-        String query="select noControl, nombre_completo,sexo,promedio,credito,idCarrera,nombre_carrera,idEstatus,"
-                + "estatus,telefono,email from vAlumno where noControl=?";
+        String query="select noControl, nombre_completo,sexo,promedio,creditos,idCarrera,nombre_carrera,idEstatus,"
+                + "estatus,telefono,email from vAlumnos where noControl=?";
         Alumno alumno=new Alumno();
         try{
             PreparedStatement comando=Conexion.getInstance().getConnection().prepareStatement(query);

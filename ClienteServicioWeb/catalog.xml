@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8090/SIEWS/SIEService?wsdl" uri="xml-resources/web-service-references/SIEService/wsdl/localhost_8090/SIEWS/SIEService.wsdl"/>
+    <system systemId="http://localhost:8090/SIEWS/SIEService?xsd=1" uri="xml-resources/web-service-references/SIEService/wsdl/localhost_8090/SIEWS/SIEService.xsd_1.xsd"/>
+</catalog>
