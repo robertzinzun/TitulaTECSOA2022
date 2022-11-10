@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for
+from flask import Flask,render_template,redirect,url_for,jsonify
 from flask_bootstrap import Bootstrap
 
 app=Flask(__name__)
@@ -27,5 +27,12 @@ def nuevaSolicitud():
 @app.route('/solicitudes/editar')
 def editarSolicitud():
     return render_template('solicitudes/editar.html')
+
+@app.route('/alumnos/consultar/<nocontrol>',methods=['get'])
+def consultarAlumno(nocontrol):
+    dict={"estatus":"Error",
+          "mensaje":"Servicio no disponible"
+          }
+    return jsonify(dict)
 if __name__=='__main__':
     app.run(debug=True)
