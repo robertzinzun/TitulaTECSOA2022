@@ -4,11 +4,7 @@
     <list default="true" id="a9303b89-ffda-434c-ad07-87116f13d8f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/TitulaTECREST.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TitulaTECREST.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECWeb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECWeb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECWeb/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECWeb/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECWeb/templates/comunes/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECWeb/templates/comunes/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECWeb/templates/usuarios/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECWeb/templates/usuarios/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TitulaTECWeb/templates/usuarios/registro.html" beforeDir="false" afterPath="$PROJECT_DIR$/../TitulaTECWeb/templates/usuarios/registro.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+            <state relative-caret-position="114">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -147,12 +143,12 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32863188" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3283767" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -179,8 +175,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        <state relative-caret-position="114">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

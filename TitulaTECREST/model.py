@@ -15,7 +15,7 @@ class Opcion(db.Model):
     def consultaGeneral(self):
         respuesta = {"estatus": "", "mensaje": ""}
         try:
-            lista=self.all()#select * from opciones
+            lista=self.query.all()#select * from opciones
             if len(lista)>0:
                 respuesta['estatus']='OK'
                 respuesta['mensaje']='Listado de Opciones'
