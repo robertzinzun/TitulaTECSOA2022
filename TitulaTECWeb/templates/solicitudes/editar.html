@@ -4,27 +4,63 @@
 {% endblock %}
 {% block principal %}
     <h1 class="bg bg-info">EDITAR SOLICITUD</h1>
-    <form action="/opciones/editar" method="post">
+    <form action="/solicitudes/modificar" method="post">
         <div class="form-group">
-            <label>ID: <b>1</b></label>
+            <label>ID:</label>
+            <input type="text" name="id" readonly value="{{solicitud['id']}}" class="form-control">
         </div>
+
         <div class="form-group">
             <label>Proyecto:</label>
-            <input type="text" name="proyecto" id="proyecto" class="form-control" required placeholder="Titulo del Proyecto">
+            <input type="text" name="proyecto" id="proyecto" class="form-control" required placeholder="Titulo del Proyecto" value="{{solicitud['proyecto']}}">
         </div>
         <div class="form-group">
             <label>Opción:</label>
             <select name="opcion">
                 <option>-Elige una opción de titulación</option>
+                {% for opcion in opciones %}
+                    {% if opcion['idOpcion']==solicitud['opcion'].get('id') %}
+                        <option value="{{opcion['idOpcion']}}" selected>{{opcion['nombre']}}</option>
+                    {% else %}
+                        <option value="{{opcion['idOpcion']}}">{{opcion['nombre']}}</option>
+                    {% endif %}
+                {% endfor %}
             </select>
         </div>
         <div class="form-group">
-            <label>Estatus:Captura</label>
+            <label>Estatus:{{solicitud['estatus']}}</label>
+        </div>
+        <button class="btn btn-primary" id="modificar"> <span class="glyphicon glyphicon-floppy-disk"></span> </button>
+        <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#eliminar" > <span class="glyphicon glyphicon-trash"></span> </button>
+        <a class="btn btn-success" href="/solicitudes"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
+        {% if get_flashed_messages()%}
+            {% for m in get_flashed_messages()%}
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{m}}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </form>
+    <!-- Modal -->
+    <div id="eliminar" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Eliminar Solicitud</h4>
+          </div>
+          <div class="modal-body">
+            <p>¿ Estas seguro de eliminar la solicitud con ID: {{solicitud['id']}} ?</p>
+          </div>
+          <div class="modal-footer">
+              <a href="/solicitudes/eliminar/{{solicitud['id']}}" class="btn btn-info">Aceptar</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
         </div>
 
-        <button class="btn btn-primary" id="registrar" disabled> <span class="glyphicon glyphicon-floppy-disk"></span> </button>
-        <button class="btn btn-danger" id="cancelar" disabled> <span class="glyphicon glyphicon-trash"></span> </button>
-        <a class="btn btn-success" href="/solicitudes"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
-    </form>
+      </div>
+    </div>
 {% endblock %}

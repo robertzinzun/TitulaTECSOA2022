@@ -15,15 +15,15 @@ function consultarAlumno(){
     ajax.send();
 }
 function llenarCampos(respuesta){
-    var alumno=JSON.parse(respuesta);
-    alert(alumno);
-    if(alumno.estatus!="Error"){
+    var resp=JSON.parse(respuesta);
+    if(resp.estatus!="Error"){
+        alumno=resp.alumno;
         document.getElementById("nombre").value=alumno.nombre;
         document.getElementById("telefono").value=alumno.telefono;
         document.getElementById("email").value=alumno.email;
         document.getElementById("creditos").value=alumno.creditos;
         document.getElementById("idCarrera").value=alumno.idCarrera;
-        document.getElementById("nombreCarrera").value=alumno.nombreCarrera;
+        document.getElementById("nombreCarrera").value=alumno.carrera;
         if(alumno.sexo=='M'){
             document.getElementById('f').removeAttribute('checked');
             document.getElementById('m').setAttribute('checked',true);
@@ -35,6 +35,7 @@ function llenarCampos(respuesta){
         document.getElementById("registrar").removeAttribute('disabled');
     }
     else{
-        alert(alumno.mensaje);
+        document.getElementById("registrar").setAttribute('disabled',true);
+        alert(resp.mensaje);
     }
 }

@@ -32,7 +32,7 @@
                     <label>No. Control:</label>
                 </div>
                 <div class="col-sm-10">
-                    <input type="number" name="nocontrol" id="nocontrol" class="form-control" required placeholder="No. Control">
+                    <input type="text" name="nocontrol" id="nocontrol" class="form-control" required placeholder="No. Control">
                 </div>
                 <div class="col-sm-1">
                     <button type="button" onclick="consultarAlumno()"><span class="glyphicon glyphicon-search"></span></button>
@@ -58,6 +58,14 @@
         <button class="btn btn-primary" id="registrar" disabled>Registrar</button>
         <a class="btn btn-primary" href="/">Regresar</a>
     </form>
+{% if get_flashed_messages()%}
+    {% for m in get_flashed_messages()%}
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>{{m}}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
 {% endblock %}
 {% block scripts %}
     {{super()}}

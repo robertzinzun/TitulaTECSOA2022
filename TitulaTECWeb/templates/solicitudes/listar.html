@@ -17,16 +17,25 @@
             <th>Ver</th>
         </thead>
         <!--For para recuperar las opciones-->
+        {% for solicitud in solicitudes %}
             <tr>
-                <td>1</td>
-                <td>Plataforma E-Commerce</td>
-                <td>Tesis</td>
-                <td>P</td>
-                <td>22-10-2022</td>
-                <td>29-10-2022</td>
-                <td><a href="/solicitudes/editar"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                <td>{{solicitud['id']}}</td>
+                <td>{{solicitud['proyecto']}}</td>
+                <td>{{solicitud['opcion'].get('nombre')}}</td>
+                <td>{{solicitud['estatus']}}</td>
+                <td>{{solicitud['fechaRegistro']}}</td>
+                <td>{{solicitud['fechaAtencion']}}</td>
+                <td><a href="/solicitudes/editar/{{solicitud['id']}}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
             </tr>
-
+        {% endfor %}
     </table>
     <a href="/principal" class="btn btn-success"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
+    {% if get_flashed_messages()%}
+            {% for m in get_flashed_messages()%}
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{m}}</strong>
+            </div>
+            {% endfor %}
+    {% endif %}
 {% endblock %}

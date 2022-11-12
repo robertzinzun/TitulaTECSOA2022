@@ -4,18 +4,18 @@
 {% endblock %}
 {% block principal %}
     <h1 class="bg bg-info">REGISTRO DE SOLICITUD</h1>
-    <form action="/opciones/registrar" method="post">
+    <form action="/solicitudes/registrar" method="post">
         <div class="form-group">
-            <label>Nombre de Alumno: <b>Roberto Suarez Zinzun</b></label>
+            <label>Nombre de Alumno: <b>{{session['usuario'].get('nombre')}}</b></label>
         </div>
          <div class="form-group">
-           <label>No. Control:02420433</label>
+           <label>No. Control:{{session['usuario'].get('noControl')}}</label>
         </div>
         <div class="form-group">
-            <label>Creditos:260</label>
+            <label>Creditos:{{session['usuario'].get('creditos')}}</label>
         </div>
         <div class="form-group">
-            <label>Carrera:Ingenieria en Sistemas Computacionales</label>
+            <label>Carrera:{{session['usuario'].get('carrera')}}</label>
         </div>
         <div class="form-group">
             <label>Proyecto:</label>
@@ -24,10 +24,21 @@
         <div class="form-group">
             <label>Opción:</label>
             <select name="opcion">
-                <option>-Elige una opción de titulación</option>
+                 <option value="0">-Elige una opción de titulación</option>
+                {% for opcion in opciones %}
+                    <option value="{{opcion['idOpcion']}}">{{opcion['nombre']}}</option>
+                {% endfor %}
             </select>
         </div>
-        <button class="btn btn-primary" id="registrar" disabled> <span class="glyphicon glyphicon-ok"></span> </button>
+        <button class="btn btn-primary" id="registrar"> <span class="glyphicon glyphicon-ok"></span> </button>
         <a class="btn btn-success" href="/solicitudes"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
+        {% if get_flashed_messages()%}
+            {% for m in get_flashed_messages()%}
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{m}}</strong>
+            </div>
+            {% endfor %}
+        {% endif %}
     </form>
 {% endblock %}

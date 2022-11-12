@@ -12,12 +12,13 @@
             <th>Descripcion</th>
         </thead>
         <!--For para recuperar las opciones-->
+        {%for opcion in opciones %}
             <tr>
-                <td>1</td>
-                <td>Tesis</td>
-                <td>Entregar del informe de la Tesis</td>
+                <td>{{opcion['idOpcion']}}</td>
+                <td>{{opcion['nombre']}}</td>
+                <td>{{opcion['descripcion']}}</td>
             </tr>
-
+        {%endfor%}
     </table>
     <a href="/principal" class="btn btn-success"> <span class="glyphicon glyphicon-arrow-left"></span> </a>
 {% endblock %}
