@@ -127,7 +127,7 @@ class Solicitud(db.Model):
 
     def toJson(self,solicitud):
         dict_sol={"administrativo":"","alumno":"","carrera":"","estatus":solicitud[7],
-                  "fechaAtencion":solicitud[5],"fechaRegistro":solicitud[6],"id":solicitud[0],
+                  "fechaAtencion":solicitud[6],"fechaRegistro":solicitud[5],"id":solicitud[0],
                   "opcion":"","proyecto":solicitud[4]}
         dict_admin={"id":solicitud[10],"nombre":solicitud[11]}
         dict_alumno = {"NC": solicitud[2], "nombre": solicitud[3]}
